@@ -801,6 +801,9 @@ footer {
 .container > .skill-grid.observable.visible{
     animation: fadeInUp 0.5s ease-in-out forwards;
 }
+.container > .explored-grid.observable.visible{
+    animation: fadeInUp 0.5s ease-in-out forwards;
+}
 .container > .portfolio-grid.observable.visible{
     animation: fadeInUp 0.5s ease-in-out forwards;
 }
