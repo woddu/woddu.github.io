@@ -55,7 +55,8 @@ body.dark-mode section p {
 }
 
 body.dark-mode .portfolio-item,
-body.dark-mode .skill-item {
+body.dark-mode .skill-item,
+body.dark-mode .explored-item {
     background-color: var(--dark-card-bg);
     border-color: var(--dark-border);
 }
@@ -228,7 +229,7 @@ header nav ul li a:hover {
     justify-content: center;
     align-items: center;
     padding: 60px 20px;
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh - 100px);
     text-align: center;
     background-color: var(--light-bg);
     flex-wrap: wrap; /* Allows wrapping on smaller screens */
@@ -310,6 +311,14 @@ section h2 {
     color: var(--light-text);
 }
 
+section h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.75em;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--light-text);
+}
+
 /* About Section */
 .about-section p {
     font-size: 1.1em;
@@ -341,6 +350,32 @@ section h2 {
 .skill-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Explored Technologies Section */
+.explored-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.explored-item {
+    background-color: var(--light-card-bg);
+    border: 1px solid var(--light-border);
+    padding: 15px;
+    text-align: center;
+    border-radius: 6px;
+    font-weight: 400;
+    font-size: 0.9em;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.explored-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
 }
 
 /* Portfolio Section */
@@ -443,7 +478,7 @@ footer {
 @media (min-width: 1600px) {
     .hero {
         padding: 40px 40px;
-        min-height: calc(100vh - 80px);
+        min-height: calc(100vh - 100px);
     }
 
     .hero-content {
@@ -470,7 +505,7 @@ footer {
 
     .hero {
         padding: 60px 40px;
-        min-height: calc(100vh - 80px);
+        min-height: calc(100vh - 100px);
     }
 
     .hero-content h1 {
@@ -500,8 +535,40 @@ footer {
         gap: 25px;
     }
 
+    .explored-grid {
+        max-width: 850px;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 18px;
+    }
+
     .portfolio-grid {
         gap: 40px;
+    }
+}
+
+@media (min-width: 1028px) and (max-width: 1400px) {
+    .hero {
+        padding: 40px 20px;
+        min-height: calc(100vh - 120px);
+    }
+
+    .hero-content {
+        margin-right: 20px;
+        padding: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 3.2em;
+        margin-bottom: 20px;
+    }
+
+    .hero-content p {
+        font-size: 1.25em;
+        margin-bottom: 25px;
+    }
+
+    .hero-image img {
+        max-width: 90%;
     }
 }
 
@@ -517,7 +584,7 @@ footer {
 
     .hero {
         padding: 40px 15px;
-        min-height: calc(100vh - 80px);
+        min-height: calc(100vh - 120px);
     }
 
     .hero-content {
@@ -546,6 +613,12 @@ footer {
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         gap: 18px;
         max-width: 800px;
+    }
+
+    .explored-grid {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 15px;
+        max-width: 600px;
     }
 
     .portfolio-grid {
@@ -689,5 +762,60 @@ footer {
 
     .portfolio-item h3 {
         font-size: 1.3em;
+    }
+}
+
+.container > .observable {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.container > .observable.visible:nth-child(odd) {
+    animation: fadeInLeft 0.5s ease-in-out forwards;
+}
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.container > .observable.visible:nth-child(even) {
+    animation: fadeInRight 0.5s ease-in-out forwards;
+}
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.container > .skill-grid.observable.visible{
+    animation: fadeInUp 0.5s ease-in-out forwards;
+}
+.container > .portfolio-grid.observable.visible{
+    animation: fadeInUp 0.5s ease-in-out forwards;
+}
+.container > .contact-links.observable.visible{
+    animation: fadeInUp 0.5s ease-in-out forwards;
+}
+.container .footer-text.observable.visible{
+    animation: fadeInUp 0.5s ease-in-out forwards;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

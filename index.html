@@ -45,7 +45,7 @@
         <section id="hero" class="hero">
             <div class="hero-content">
                 <h1>Hi, I'm Ron Neil Castro</h1>
-                <p>A passionate Software Developer building modern and responsive web applications.</p>
+                <p>A passionate Software Developer crafting robust backend systems, full-stack solutions, embedded applications, and intuitive Android experiences.</p>
                 <a href="#portfolio" class="btn">View My Work</a>
             </div>
             <div class="hero-image">
@@ -55,36 +55,46 @@
 
         <section id="about" class="about-section">
             <div class="container">
-                <h2>About Me</h2>
-                <p>
-                    I'm a software developer with a strong foundation in front-end and back-end technologies. I specialize in creating intuitive and efficient user experiences, with a keen eye for design and performance. My journey in tech started with [mention something brief and interesting, e.g., a fascination for how websites work, a coding bootcamp, a personal project]. I enjoy solving complex problems and continuously learning new technologies.
+                <h2 class="observable">About Me</h2>
+                <p class="observable">
+                    I'm a software developer with a strong foundation in backend and full-stack technologies, as well as hands-on experience in embedded systems and Android application development. I specialize in building efficient, scalable solutions with a focus on performance, reliability, and user-centric design. My journey in tech began with [insert a brief and compelling origin—e.g., a fascination with how devices communicate, a personal app project, or a deep dive into system-level programming]. I thrive on solving complex technical challenges and am passionate about continuously expanding my skill set across diverse platforms.
                 </p>
-                <p>
+                <!-- <p class="observable">
                     Outside of coding, you can find me [mention a hobby or interest, e.g., hiking, reading sci-fi, playing guitar].
-                </p>
+                </p> -->
             </div>
         </section>
 
         <section id="skills" class="skills-section">
             <div class="container">
-                <h2>Skills</h2>
-                <div class="skill-grid">
-                    <div class="skill-item">HTML5</div>
-                    <div class="skill-item">CSS3</div>
-                    <div class="skill-item">JavaScript</div>
-                    <div class="skill-item">React</div>
-                    <div class="skill-item">Node.js</div>
+                <h2 class="observable">Skills</h2>
+                <div class="skill-grid observable">
                     <div class="skill-item">Python</div>
+                    <div class="skill-item">Fastapi</div>
+                    <div class="skill-item">Laravel</div>
+                    <div class="skill-item">Arduino</div>
+                    <div class="skill-item">Vue</div>
                     <div class="skill-item">Git</div>
-                    <div class="skill-item">Responsive Design</div>
+                    <div class="skill-item">Java/Kotlin</div>
+                    <div class="skill-item">React</div>
+                </div>
+            </div>
+            <div class="container">
+                <h3 class="observable">Explored Technologies</h3>
+                <div class="explored-grid observable">
+                    <div class="explored-item">Django</div>
+                    <div class="explored-item">Flask</div>
+                    <div class="explored-item">C</div>
+                    <div class="explored-item">Nuxt</div>
+                    <div class="explored-item">.NET</div>
                 </div>
             </div>
         </section>
 
         <section id="portfolio" class="portfolio-section">
             <div class="container">
-                <h2>My Work</h2>
-                <div class="portfolio-grid">
+                <h2 class="observable">My Work</h2>
+                <div class="portfolio-grid observable">
                     <div class="portfolio-item">
                         <img src="https://via.placeholder.com/300x200" alt="Project 1">
                         <h3>Project One Title</h3>
@@ -109,9 +119,9 @@
 
         <section id="contact" class="contact-section">
             <div class="container">
-                <h2>Get in Touch</h2>
-                <p>I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
-                <div class="contact-links">
+                <h2 class="observable">Get in Touch</h2>
+                <p class="observable">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+                <div class="contact-links observable">
                     <a href="mailto:your.email@example.com" class="contact-link">Email Me</a>
                     <a href="https://linkedin.com/in/yourusername" target="_blank" class="contact-link">LinkedIn</a>
                     <a href="https://github.com/yourusername" target="_blank" class="contact-link">GitHub</a>
@@ -122,7 +132,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Your Name. All rights reserved.</p>
+            <p class="footer-text observable">&copy; 2025 Your Name. All rights reserved.</p>
         </div>
     </footer>
 
@@ -132,6 +142,7 @@
         const body = document.body;
         const moonIcon = darkModeToggle.querySelector('.moon-icon');
         const sunIcon = darkModeToggle.querySelector('.sun-icon');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
         // Check for saved theme preference
         const currentTheme = localStorage.getItem('theme');
@@ -146,6 +157,16 @@
             }
         }
 
+        if (prefersDark) {
+            body.classList.add('dark-mode');
+            moonIcon.style.display = 'none';
+            sunIcon.style.display = 'block';
+        } else {
+            body.classList.remove('dark-mode');
+            moonIcon.style.display = 'block';
+            sunIcon.style.display = 'none';
+        }
+
         darkModeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             if (body.classList.contains('dark-mode')) {
@@ -158,6 +179,7 @@
                 sunIcon.style.display = 'none';
             }
         });
+
 
         // Mobile menu toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
@@ -175,6 +197,29 @@
                 mobileMenuToggle.classList.remove('active');
             });
         });
+
+        // Intersection Observer for animations
+        const observableElements = document.querySelectorAll('.observable');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // observer.unobserve(entry.target);
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, observerOptions);
+
+        observableElements.forEach(element => {
+            observer.observe(element);
+        });
+
     </script>
 </body>
 </html>
