@@ -2,17 +2,18 @@
 :root {
     --light-bg: #f8f9fa;
     --light-text: #212529;
-    --light-primary: #007bff;
+    --light-primary: #00c16a;
     --light-accent: #6c757d;
     --light-card-bg: #ffffff;
     --light-border: #dee2e6;
 
-    --dark-bg: #1a1a2e;
+    --dark-bg: #0f172b;
     --dark-text: #e0e0e0;
-    --dark-primary: #8d8dff; /* Lighter blue for dark mode */
+    --dark-primary: #00dc82; /* Lighter blue for dark mode */
     --dark-accent: #a0a0a0;
     --dark-card-bg: #2e2e42;
     --dark-border: #444455;
+    
 }
 
 body {
