@@ -10,6 +10,7 @@
     --dark-bg: #0f172b;
     --dark-text: #e0e0e0;
     --dark-primary: #00dc82; /* Lighter blue for dark mode */
+    --dark-btn-accent: #01c070;
     --dark-accent: #a0a0a0;
     --dark-card-bg: #2e2e42;
     --dark-border: #444455;
@@ -93,10 +94,11 @@ body.dark-mode .contact-link {
 body.dark-mode .btn:hover,
 body.dark-mode .project-link:hover,
 body.dark-mode .contact-link:hover {
-    background-color: var(--dark-accent);
-    border-color: var(--dark-accent);
-    color: #ffffff;
+    background-color: var(--dark-btn-accent);
+    border-color: var(--dark-btn-accent);
+    color: #1a1a2e;
 }
+
 
 body.dark-mode .hero-image img {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
@@ -451,7 +453,10 @@ section h3 {
 }
 
 .contact-link {
-    display: inline-block;
+    display: flex;             
+    align-items: center;       
+    justify-content: center;   
+    gap: 8px;                  
     background-color: var(--light-primary);
     color: #fff;
     padding: 12px 25px;
@@ -460,6 +465,8 @@ section h3 {
     font-weight: 700;
     transition: background-color 0.3s ease;
 }
+
+
 
 .contact-link:hover {
     background-color: var(--light-accent);
